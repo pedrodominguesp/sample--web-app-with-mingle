@@ -1,0 +1,34 @@
+<po-container>
+    <form #optionForm="ngForm">
+        <div class="po-row">
+            <po-radio-group 
+            name="environment" 
+            [(ngModel)]="environment"
+            p-label="Ambiente" 
+            class="po-md-6" 
+            p-columns="4" 
+            [p-options]="[
+                    { label: 'Local', value: '1' },
+                    { label: 'DEV-Mingle', value: '2' },
+                    { label: 'HOM-Mingle', value: '3' },
+                    { label: 'PROD-Mingle', value: '4' }
+            ]">
+
+            </po-radio-group>
+
+            {{environment}}
+        </div>
+        <hr>
+        <div class="po-row">
+            <po-input class="po-md-6 center" name="Alias" [(ngModel)]="alias" p-clean p-label="Alias"> </po-input>
+          </div>
+          <hr>
+          <div class="po-row">
+            <po-input class="po-md-6" name="idApp" [(ngModel)]="idApp" p-clean p-label="ID Aplicativo"> </po-input>
+          </div>
+          <hr>
+          <div class="po-row">
+            <po-button [p-loading]="loading" class="po-md-3" p-label="Salvar configuração" (p-click)="save()"> </po-button>
+          </div>
+    </form>
+</po-container>
