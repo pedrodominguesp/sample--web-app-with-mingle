@@ -1,20 +1,17 @@
-import { Component } from '@angular/core';
-
-import { PoMenuItem } from '@po-ui/ng-components';
-
+import { Component, OnInit } from '@angular/core';
+import {MingleService, Configuration} from '@totvs/mingle';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
 
-  readonly menus: Array<PoMenuItem> = [
-    { label: 'Home', action: this.onClick.bind(this) }
-  ];
+export class AppComponent implements  OnInit{
 
-  private onClick() {
-    alert('Clicked in menu item')
-  }
+  
+  ngOnInit() {}
+  constructor(){}
+  
+
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ThrowStmt } from '@angular/compiler';
 import { PoDialogService } from '@po-ui/ng-components';
 import { Router } from '@angular/router';
+import { ConfigService } from './config.service';
 
 @Component({
   selector: 'app-config',
@@ -13,57 +14,32 @@ export class ConfigComponent implements OnInit {
   alias: string;
   idApp: string;
   loading: boolean;
-  constructor(private poDialog: PoDialogService, private router: Router) { }
+  constructor(private poDialog: PoDialogService, private router: Router, private configService: ConfigService) { }
 
   ngOnInit(): void {
     this.loading = false;
     this.setInitialValues();
   }
 
-  private save(): void {
+   save(): void {
     this.loading = true;
-    this.setEnvironment(this.environment);
-    this.setAlias(this.alias)
-    this.setIdApp(this.idApp)
+    this.configService.saveConfig(this.environment, this.alias, this.idApp);
     setTimeout(() => {
       this.loading = false;
+      this.poDialog.alert({
+        title: 'Eba!',
+        message: 'Configurações atualizadas com sucesso!',
+        ok: () => (this.router.navigate(['/login']))
+      });
     }, 500);
-    this.poDialog.alert({
-      title: 'Eba!',
-      message: 'Configurações atualizadas com sucesso!',
-      ok: () => (this.router.navigate(['/login']))
-    });
+    
   }
-  
 
   private setInitialValues(): void {
-    this.environment = this.getEnvironment();
-    this.alias = this.getAlias();
-    this.idApp = this.getIdApp();
+    this.environment = this.configService.getEnvironment();
+    this.alias = this.configService.getAlias();
+    this.idApp = this.configService.getIdApp();
   }
 
-  private getEnvironment(): string {
-    return localStorage.getItem("environment")
-  }
-
-  private setEnvironment(value: string): void {
-    localStorage.setItem("environment", value);
-  }
-
-  private getAlias(): string {
-    return localStorage.getItem("alias")
-  }
-
-  private setAlias(value: string): void {
-    localStorage.setItem("alias", value);
-  }
-
-  private getIdApp(): string {
-    return localStorage.getItem("idApp")
-  }
-
-  private setIdApp(value: string): void {
-    localStorage.setItem("idApp", value);
-  }
-
+ 
 }
