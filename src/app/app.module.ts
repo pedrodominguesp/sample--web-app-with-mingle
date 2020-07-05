@@ -15,6 +15,8 @@ import { ConfigComponent } from './config/config.component';
 import { ConfigService } from './config/config.service';
 import { AppInitService } from './app-init.service';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
+import { GatewayComponent } from './gateway/gateway.component';
+import { MenuComponent } from './menu/menu.component';
 
 export function initializeApp1(appInitService: AppInitService) {
   return (): Promise<any> => { 
@@ -28,7 +30,9 @@ export function initializeApp1(appInitService: AppInitService) {
     LoginComponent,
     HomeComponent,
     ConfigComponent,
-    DashboardComponent
+    DashboardComponent,
+    GatewayComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,7 @@ export function initializeApp1(appInitService: AppInitService) {
     AppInitService,
     ConfigService,
     MingleService, 
-    { provide: APP_INITIALIZER,useFactory: initializeApp1, deps: [AppInitService], multi: true},
+    { provide: APP_INITIALIZER, useFactory: initializeApp1, deps: [AppInitService], multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: MingleHttpInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

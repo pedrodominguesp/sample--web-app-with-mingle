@@ -1,0 +1,22 @@
+<div class="po-wrapper">
+    <po-page-default p-title="Testes Rest">
+        <div class="po-row">
+            <div class="po-xl-4 po-lg-4 po-md-4 po-sm-4">
+                <div class="po-row">
+                    <po-button p-label="GET clientes" p-type="primary" (p-click)="getClients()">
+                    </po-button>
+                </div>
+                <div class="po-row">
+                    <po-button p-label="POST dados" p-type="primary" (p-click)="postTest()">
+                    </po-button>
+                </div>
+            </div>
+            <div class="po-xl-4 po-lg-4 po-md-4 po-sm-4">
+                <po-info p-label="Response" [p-value]="gatewayData"> </po-info>
+            </div>
+        </div>
+
+    </po-page-default>
+    <app-menu></app-menu>
+    <po-loading-overlay [hidden]="isHideLoading"></po-loading-overlay>
+</div>

@@ -22,13 +22,15 @@ export class LoginComponent implements OnInit {
   readonly menus: Array<PoMenuItem> = [
     { label: 'Configurar Login', shortLabel: 'Config', link: '/config', icon: 'po-icon-settings' }
   ];
-
+  
   login(formData) {
     this.loading = true;
     this.mingleService.auth.login(formData.login,
       formData.password,
       this.configService.getAlias())
-      .subscribe(() => {
+      .subscribe((dataLogin) => {
+        console.log("dados do login", dataLogin);
+
         this.route.navigate(['home']);
       }, (authError) => {
         console.log(authError);

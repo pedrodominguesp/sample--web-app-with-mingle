@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MingleService } from '@totvs/mingle';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -12,15 +13,11 @@ export class DashboardComponent implements OnInit {
   constructor(private mingleService: MingleService) { }
 
   ngOnInit(): void {
-    this.loadSessionInfo()
+    this.loadSessionInfo();
   }
 
   loadSessionInfo() {
-    this.sessionInfo = this.mingleService.getSessionInfo();
-    // this.set_alias = sessionInfo.set_alias
-    // console.log(sessionInfo);
-    
+    this.sessionInfo = this.mingleService.getSessionInfo();    
   }
-  
 
 }

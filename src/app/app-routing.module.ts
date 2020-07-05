@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ConfigComponent } from './config/config.component';
+import { GatewayComponent } from './gateway/gateway.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'config', component: ConfigComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'gateway', component: GatewayComponent},
   {path:'', redirectTo: '/login',  pathMatch: 'full'}
 ]; 
 

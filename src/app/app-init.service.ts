@@ -19,9 +19,18 @@ export class AppInitService {
       config.app_identifier = this.configService.getIdApp();
 
       this.mingleService.setConfiguration(config);
-      this.mingleService.init();
+      
+      this.mingleService.init()
+      .then( init => {
+        resolve('Mingle Service Init');
+      }).catch(error => {
+        console.log("error" , error);
+        
+        reject(error);
+      });
+
       console.log("Mingle Service configuration completed");
-      resolve();
+      
     });
   }
 }

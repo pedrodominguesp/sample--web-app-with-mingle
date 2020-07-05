@@ -1,4 +1,13 @@
 <po-container>
-    <po-info p-label="SET Alias" [p-value]="sessionInfo.set_alias"> </po-info>
-    <po-info p-label="SET ID" [p-value]="sessionInfo.set_id"> </po-info>
+    <div class="po-row">
+        <div class="po-xl-6 po-lg-6 po-md-6 po-sm-6">
+            <po-info p-label="Driver" [p-value]="sessionInfo.authDriver"> </po-info>
+            <po-info p-label="SET Alias" [p-value]="sessionInfo.set_alias"> </po-info>
+            <po-info p-label="SET ID" [p-value]="sessionInfo.set"> </po-info>
+        </div>
+        <div class="po-xl-6 po-lg-6 po-md-6 po-sm-6"> 
+            <po-info p-label="Cliente" [p-value]="sessionInfo.client_name"> </po-info>
+            <po-info p-label="Cliente ID" [p-value]="sessionInfo.client"> </po-info>
+            <po-info p-label="Login do usuário" [p-value]="sessionInfo.user_login"> </po-info></div>
+    </div>
 </po-container>
