@@ -5,12 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ConfigComponent } from './config/config.component';
 import { GatewayComponent } from './gateway/gateway.component';
+import { MingleClientTestsComponent } from './mingle-client-tests/mingle-client-tests.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'config', component: ConfigComponent},
   {path: 'home', component: HomeComponent},
   {path: 'gateway', component: GatewayComponent},
+  {path: 'mingleClient', component: MingleClientTestsComponent},
   {path:'', redirectTo: '/login',  pathMatch: 'full'}
 ]; 
 

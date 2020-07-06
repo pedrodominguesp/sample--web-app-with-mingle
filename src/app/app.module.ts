@@ -5,7 +5,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MingleHttpInterceptor, MingleService } from '@totvs/mingle';
 
 import { PoPageLoginModule } from '@po-ui/ng-templates';
-import { PoModule } from '@po-ui/ng-components';
+import { PoModule, PoFieldModule } from '@po-ui/ng-components';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +17,7 @@ import { AppInitService } from './app-init.service';
 import { DashboardComponent } from './home/dashboard/dashboard.component';
 import { GatewayComponent } from './gateway/gateway.component';
 import { MenuComponent } from './menu/menu.component';
+import { MingleClientTestsComponent } from './mingle-client-tests/mingle-client-tests.component';
 
 export function initializeApp1(appInitService: AppInitService) {
   return (): Promise<any> => { 
@@ -32,14 +33,16 @@ export function initializeApp1(appInitService: AppInitService) {
     ConfigComponent,
     DashboardComponent,
     GatewayComponent,
-    MenuComponent
+    MenuComponent,
+    MingleClientTestsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     PoModule,
     PoPageLoginModule,
-    FormsModule
+    FormsModule,
+    PoFieldModule
   ],
   providers: [
     AppInitService,
