@@ -32,4 +32,10 @@ export class MingleClientTestsComponent implements OnInit {
     this.poNotification.success('Text copied!');
   }
 
+  metrics() {
+    for (let i = 0; i < 40; i++) {
+      this.mingleService.registerMetric('custom', {jtw:i});
+      
+    }
+  }
 }

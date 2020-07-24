@@ -10,7 +10,7 @@ export class AppInitService {
     return new Promise((resolve, reject) => {
       console.log("Mingle Service Configuration called");
       const config = new Configuration();
-      config.modules.web = true;
+      config.modules.web = false;
       config.environment = 'DEV';
       config.modules.usage_metrics = true;
       config.modules.gateway = true;
@@ -19,7 +19,7 @@ export class AppInitService {
       config.app_identifier = this.configService.getIdApp();
 
       this.mingleService.setConfiguration(config);
-      
+            
       this.mingleService.init()
       .then( init => {
         resolve('Mingle Service Init');
