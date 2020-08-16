@@ -1,34 +1,27 @@
 <po-container>
-    <form #optionForm="ngForm">
-        <div class="po-row">
-            <po-radio-group 
-            name="environment" 
-            [(ngModel)]="environment"
-            p-label="Ambiente" 
-            class="po-md-6" 
-            p-columns="4" 
-            [p-options]="[
+  <form [formGroup]="reactiveForm">
+    <div class="po-row">
+      <po-radio-group formControlName="environment"
+      [(ngModel)]="environment" p-label="Ambiente" class="po-md-6" p-columns="4" [p-options]="[
                     { label: 'Local', value: '1' },
                     { label: 'DEV-Mingle', value: '2' },
                     { label: 'HOM-Mingle', value: '3' },
                     { label: 'PROD-Mingle', value: '4' }
             ]">
 
-            </po-radio-group>
-
-            {{environment}}
-        </div>
-        <hr>
-        <div class="po-row">
-            <po-input class="po-md-6 center" name="Alias" [(ngModel)]="alias" p-clean p-label="Alias"> </po-input>
-          </div>
-          <hr>
-          <div class="po-row">
-            <po-input class="po-md-6" name="idApp" [(ngModel)]="idApp" p-clean p-label="ID Aplicativo"> </po-input>
-          </div>
-          <hr>
-          <div class="po-row">
-            <po-button [p-loading]="loading" class="po-md-3" p-label="Salvar configuração" (p-click)="save()"> </po-button>
-          </div>
-    </form>
+      </po-radio-group>
+    </div>
+    <hr>
+    <div class="po-row">
+      <po-input class="po-md-6 center" [(ngModel)]="alias"  p-clean p-label="Alias" formControlName="alias" p-required="true"> </po-input>
+    </div>
+    <hr>
+    <div class="po-row">
+      <po-input class="po-md-6" formControlName="appId" [(ngModel)]="appId" p-clean p-label="ID Aplicativo"> </po-input>
+    </div>
+    <hr>
+    <div class="po-row">
+      <po-button class="po-md-3" p-label="Save" [p-disabled]="!reactiveForm.valid" (p-click)="saveForm()"> </po-button>
+    </div>
+  </form>
 </po-container>

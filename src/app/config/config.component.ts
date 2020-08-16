@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
-import { PoDialogService } from '@po-ui/ng-components';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { PoDialogService } from '@po-ui/ng-components';
+
 import { ConfigService } from './config.service';
+
 
 @Component({
   selector: 'app-config',
@@ -10,20 +13,34 @@ import { ConfigService } from './config.service';
   styleUrls: ['./config.component.css']
 })
 export class ConfigComponent implements OnInit {
-  environment: string;
-  alias: string;
-  idApp: string;
+  reactiveForm: FormGroup;
   loading: boolean;
-  constructor(private poDialog: PoDialogService, private router: Router, private configService: ConfigService) { }
+  alias: string;
+  appId: string;
+  environment: string;
+
+  constructor(private formBuilder: FormBuilder, private poDialog: PoDialogService, private router: Router, private configService: ConfigService) {
+    this.createReactiveForm();
+  }
 
   ngOnInit(): void {
     this.loading = false;
     this.setInitialValues();
   }
 
-   save(): void {
+  createReactiveForm() {
+    this.reactiveForm = this.formBuilder.group({
+      environment: ['', Validators.compose([Validators.required])],
+      alias: ['', Validators.compose([Validators.required])],
+      appId: ['', Validators.compose([Validators.required, Validators.minLength(5)])]
+    });
+  }
+
+  saveForm() {
     this.loading = true;
-    this.configService.saveConfig(this.environment, this.alias, this.idApp);
+    let valueForm = this.reactiveForm.value;
+    Object.keys(valueForm).map(k => valueForm[k] = valueForm[k].trim());
+    this.configService.saveConfig(valueForm.environment, valueForm.alias, valueForm.appId);
     setTimeout(() => {
       this.loading = false;
       this.poDialog.alert({
@@ -32,14 +49,12 @@ export class ConfigComponent implements OnInit {
         ok: () => (this.router.navigate(['/login']))
       });
     }, 500);
-    
+
   }
 
   private setInitialValues(): void {
     this.environment = this.configService.getEnvironment();
     this.alias = this.configService.getAlias();
-    this.idApp = this.configService.getIdApp();
+    this.appId = this.configService.getIdApp();
   }
-
- 
 }

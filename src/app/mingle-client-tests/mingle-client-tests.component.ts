@@ -33,9 +33,7 @@ export class MingleClientTestsComponent implements OnInit {
   }
 
   metrics() {
-    for (let i = 0; i < 40; i++) {
-      this.mingleService.registerMetric('custom', {jtw:i});
-      
-    }
+    this.mingleService.registerMetric('custom', {testeMingleService:"ok"});
+    this.poNotification.success('Métrica customizada registrada com sucesso.');
   }
 }

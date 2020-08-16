@@ -17,45 +17,45 @@ export class GatewayComponent implements OnInit {
   isHideLoading = true;
 
   getClients() {
-    for (let i = 0; i <10; i++) {
-      // this.isHideLoading = false;
-    const options = {headers: {header_teste: `123456`}, body: {teste: 123}};
+
+    this.isHideLoading = false;
+    const options = { headers: { header_teste: `123456` }, body: { teste: 123 } };
 
     this.mingleService.gateway.get('clients', options).subscribe(response => {
       this.gatewayData = JSON.stringify(response);
-      // this.isHideLoading = true;
+      this.isHideLoading = true;
     }, error => {
-      this.gatewayData = error ;
-      // this.isHideLoading = true;
-    })
-      
-    }
-
+      this.gatewayData = error;
+      this.isHideLoading = true;
+    });
   }
-
 
   getRecurse() {
     this.isHideLoading = false;
-    const options = {headers: {header_teste: `123456`}, body: {teste: 123}};
+    const options = {
+      headers: {
+        'header-customizado': 'conteudo-header'
+      }
+    }
 
     this.mingleService.gateway.get('recurse/12345567%2F', options).subscribe(response => {
       this.gatewayData = JSON.stringify(response);
       this.isHideLoading = true;
     }, error => {
-      this.gatewayData = error ;
+      this.gatewayData = error;
       this.isHideLoading = true;
     })
 
   }
 
-  postTest(){
+  postTest() {
     this.isHideLoading = false;
-    const options = {headers: {"x-totvs-test": "123456"}, body: {teste: 123}};
-    this.mingleService.gateway.post('/testedepost', options ).subscribe(response => {
+    const options = { headers: { "x-totvs-test": "123456" }, body: { teste: 123 } };
+    this.mingleService.gateway.post('/testedepost', options).subscribe(response => {
       this.gatewayData = JSON.stringify(response);
       this.isHideLoading = true;
     }, error => {
-      this.gatewayData = error ;
+      this.gatewayData = error;
       this.isHideLoading = true;
     })
   }

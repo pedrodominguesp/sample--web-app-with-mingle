@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MingleHttpInterceptor, MingleService } from '@totvs/mingle';
 
@@ -42,7 +42,8 @@ export function initializeApp1(appInitService: AppInitService) {
     PoModule,
     PoPageLoginModule,
     FormsModule,
-    PoFieldModule
+    PoFieldModule,
+    ReactiveFormsModule
   ],
   providers: [
     AppInitService,

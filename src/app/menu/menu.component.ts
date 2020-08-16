@@ -17,7 +17,7 @@ export class MenuComponent implements OnInit {
 
   readonly menus: Array<PoMenuItem> = [
     { label: 'Home', shortLabel: 'Home', icon: 'po-icon-home', link: '/home' },
-    { label: 'Testes de gateway', shortLabel: 'Gateway', icon: 'po-icon-settings', link: '/gateway'  },
+    { label: 'Testes de gateway', shortLabel: 'Gateway', icon: 'po-icon-refresh', link: '/gateway'  },
     { label: 'Testes Mingle Client', shortLabel: 'MingleClient', icon: 'po-icon-settings', link: '/mingleClient'  },
     { label: 'Logout', shortLabel: 'Logout', icon: 'po-icon po-icon-exit', action:this.logout.bind(this)  }
   ];
