@@ -3,6 +3,7 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MingleHttpInterceptor, MingleService } from '@totvs/mingle';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PoPageLoginModule } from '@po-ui/ng-templates';
 import { PoModule, PoFieldModule } from '@po-ui/ng-components';
@@ -43,7 +44,8 @@ export function initializeApp1(appInitService: AppInitService) {
     PoPageLoginModule,
     FormsModule,
     PoFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     AppInitService,

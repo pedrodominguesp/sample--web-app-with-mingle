@@ -24,7 +24,7 @@ export class ConfigService {
         env = 'http://localhost:80/api';
         break;
       case '2':
-        env = 'https://dev-mingle.totvs.io/api';
+        env = 'https://dev-mingle.totvs.com.br/api';
         break;
       case '3':
         env = 'https://hom-mingle.totvs.com.br/api';

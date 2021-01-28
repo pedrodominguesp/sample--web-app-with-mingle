@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { MingleService } from '@totvs/mingle';
 import { PoNotificationService } from '@po-ui/ng-components';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-mingle-client-tests',
@@ -11,7 +12,7 @@ export class MingleClientTestsComponent implements OnInit {
   data: any;
   label: string;
   @ViewChild('boxUrl', { read: ElementRef, static: true }) boxUrlElement;
-  constructor(private mingleService: MingleService, private poNotification: PoNotificationService) { }
+  constructor(private mingleService: MingleService, private poNotification: PoNotificationService, private http : HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -22,8 +23,10 @@ export class MingleClientTestsComponent implements OnInit {
   }
 
   refreshToken(){
-    this.data = JSON.stringify(this.mingleService.getBodyToRefreshTokenAPI());
-    this.label = "Body refresh token"
+    const bodyRefreshToken = this.mingleService.getBodyToRefreshTokenAPI();
+    const urlRefreshTOken = this.mingleService.getRefreshTokenURL();
+    
+    this.http.post(urlRefreshTOken, bodyRefreshToken).subscribe(resultAuth => console.log(resultAuth))
   }
 
   copyToClipboard() {

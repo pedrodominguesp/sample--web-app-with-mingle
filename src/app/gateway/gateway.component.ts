@@ -51,7 +51,7 @@ export class GatewayComponent implements OnInit {
   postTest() {
     this.isHideLoading = false;
     const options = { headers: { "x-totvs-test": "123456" }, body: { teste: 123 } };
-    this.mingleService.gateway.post('/testedepost', options).subscribe(response => {
+    this.mingleService.gateway.post('send', options).subscribe(response => {
       this.gatewayData = JSON.stringify(response);
       this.isHideLoading = true;
     }, error => {
