@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+import { MingleService, Configuration } from '@totvs/mingle'
+
+@Injectable()
 export class ConfigService {
 
-  constructor() { }
+  constructor(private mingleService: MingleService) { }
 
   saveConfig(environment, alias, idApp): void {
     this.setEnvironment(environment);
     this.setAlias(alias)
     this.setIdApp(idApp)
+    this.mingleConfiguration();
   }
 
   getEnvironment(): string {
@@ -55,6 +56,33 @@ export class ConfigService {
 
   private setIdApp(value: string): void {
     localStorage.setItem("idApp", value);
+  }
+
+  mingleConfiguration(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      console.log("Mingle Service Configuration called");
+      const config = new Configuration();
+      config.modules.web = true;
+      config.environment = 'DEV';
+      config.modules.usage_metrics = true;
+      config.modules.gateway = true;
+      config.modules.push_notification = true;
+      config.server = this.getEnvironmentURL();
+      config.app_identifier = this.getIdApp();
+
+      this.mingleService.setConfiguration(config);
+
+      this.mingleService.init()
+        .then(init => {
+          resolve('Mingle Service Init');
+        }).catch(error => {
+          console.log("error", error);
+          reject(error);
+        });
+
+      console.log("Mingle Service configuration completed");
+
+    });
   }
 
 }

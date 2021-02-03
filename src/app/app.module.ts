@@ -21,7 +21,7 @@ import { MingleClientTestsComponent } from './mingle-client-tests/mingle-client-
 
 export function initializeApp1(appInitService: AppInitService) {
   return (): Promise<any> => { 
-    return appInitService.mingleConfiguration();
+    return appInitService.applyInitConfigMingle();
   }
 }
 
@@ -43,7 +43,7 @@ export function initializeApp1(appInitService: AppInitService) {
     PoPageLoginModule,
     FormsModule,
     PoFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     AppInitService,
