@@ -21,7 +21,7 @@
     "@angular/router": "~10.2.4",
     "@po-ui/ng-components": "^2.6.0",
     "@po-ui/ng-templates": "^2.6.0",
-    "@totvs/mingle": "0.0.1-20201209.2",
+    "@totvs/mingle": "0.0.1-20210208.2",
     "@totvs/po-totvs-corp-theme": "^2.0.0-beta.1",
     "rxjs": "^6.6.3",
     "rxjs-compat": "^6.6.3",
