@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MingleHttpInterceptor, MingleService } from '@totvs/mingle';
+import { MingleService } from '@totvs/mingle';
 import { HttpClientModule } from '@angular/common/http';
 
 import { PoPageLoginModule } from '@po-ui/ng-templates';
@@ -51,8 +50,7 @@ export function initializeApp1(appInitService: AppInitService) {
     AppInitService,
     ConfigService,
     MingleService, 
-    { provide: APP_INITIALIZER, useFactory: initializeApp1, deps: [AppInitService], multi: true},
-    { provide: HTTP_INTERCEPTORS, useClass: MingleHttpInterceptor, multi: true }
+    { provide: APP_INITIALIZER, useFactory: initializeApp1, deps: [AppInitService], multi: true}
   ],
   bootstrap: [AppComponent]
 })
