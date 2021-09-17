@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { MingleClientTestsComponent } from './mingle-client-tests.component';
 
@@ -6,7 +6,7 @@ describe('MingleClientTestsComponent', () => {
   let component: MingleClientTestsComponent;
   let fixture: ComponentFixture<MingleClientTestsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MingleClientTestsComponent ]
     })
